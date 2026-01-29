@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         REPO = 'https://github.com/BackstageSSPPoC/${{values.app_name}}'
-        BRANCH = 'master'
+        BRANCH = 'main'
     }
 
     stages {
