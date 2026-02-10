@@ -8,7 +8,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     jenkins.io/job-full-name: Backstage_SSP_PoC/${{values.app_name}}/main
     argocd/app-name: ${{values.app_name}}
-    argocd/app-namespace: main
+    argocd/instance-name: main
 
 spec:
   type: service
