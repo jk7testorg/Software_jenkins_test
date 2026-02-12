@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ${APP_NAME}
-          image: chaitanyapandeygspann/${APP_NAME}:1.0.${BUILD_NUMBER}
+          image: ${DOCKER_IMAGE}
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
