@@ -1,5 +1,5 @@
 # Use official Node.js image
-FROM node:18-alpine
+FROM node:18-bookworm-slim
 
 # Create app directory inside container
 WORKDIR /usr/src/app
