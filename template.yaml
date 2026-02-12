@@ -53,18 +53,18 @@ spec:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
-    - id: create-k8s-manifest
+    - id: create-k8s-folder
       name: Create K8s Manifest Folder
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?owner=BackstageSSPPo&repo=k8s-manifests
-        title: "Add k8s manifests for ${{ parameters.app_name }}"
-        branchName: add-${{ parameters.app_name }}
-        sourcePath: ./k8s-template
-        targetPath: apps/${{ parameters.app_name }}
+        repoUrl: github.com?owner=BackstageSSPPoC&repo=k8s-manifests
+        branchName: create-${{ parameters.component_id }}
+        title: "Add manifests for ${{ parameters.component_id }}"
+        description: "This PR creates Kubernetes manifests for ${{ parameters.component_id }}"
+        sourcePath: ./manifest-templates
+        targetPath: apps/${{ parameters.component_id }}
 
   output:
     links:
       - title: Repository
         url: ${{ steps['publish'].output.remoteUrl }}
-
