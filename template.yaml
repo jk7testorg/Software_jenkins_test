@@ -42,7 +42,7 @@ spec:
       action: publish:github
       input:
         description: This is ${{ parameters.component_id }}
-        repoUrl: github.com?owner=BackstageSSPPoC&repo=${{parameters.component_id}}
+        repoUrl: github.com?owner=jk7testorg&repo=${{parameters.component_id}}
         protectDefaultBranch: false
         repoVisibility: public
 
@@ -57,7 +57,7 @@ spec:
       name: Create K8s Manifest Folder
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?owner=BackstageSSPPoC&repo=k8s-manifests
+        repoUrl: github.com?owner=jk7testorg&repo=k8s-manifests
         branchName: create-${{ parameters.component_id }}
         title: "Add manifests for ${{ parameters.component_id }}"
         description: "This PR creates Kubernetes manifests for ${{ parameters.component_id }}"
@@ -67,4 +67,5 @@ spec:
   output:
     links:
       - title: Repository
+
         url: ${{ steps['publish'].output.remoteUrl }}
