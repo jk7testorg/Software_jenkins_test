@@ -57,7 +57,7 @@ spec:
       name: Create K8s Manifest Folder
       action: publish:github:pull-request
       input:
-        repoUrl: github.com?owner=jk7testorg&repo=k8s-manifest
+        repoUrl: https://github.com/jk7testorg/k8s-manifest
         branchName: create-${{ parameters.component_id }}
         title: "Add manifests for ${{ parameters.component_id }}"
         description: "This PR creates Kubernetes manifests for ${{ parameters.component_id }}"
@@ -69,4 +69,5 @@ spec:
       - title: Repository
 
         url: ${{ steps['publish'].output.remoteUrl }}
+
 
