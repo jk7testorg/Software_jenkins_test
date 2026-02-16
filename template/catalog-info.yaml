@@ -6,7 +6,7 @@ metadata:
   annotations:
     github.com/project-slug: jk7testorg/${{values.app_name}}
     backstage.io/techdocs-ref: dir:.
-    jenkins.io/job-full-name: Backstage_SSP_PoC/${{values.app_name}}/main
+    jenkins.io/job-full-name: jk7test/${{values.app_name}}/main
     argocd/app-name: ${{values.app_name}}
     # argocd/app-selector: app.kubernetes.io/instance=${{values.app_name}}
     argocd/instance-name: default
