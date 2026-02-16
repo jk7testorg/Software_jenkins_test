@@ -63,7 +63,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
                     sh '''
-                        git clone https://${GITHUB_TOKEN}@github.com/jk7testorg/k8s-manifests.git
+                        git clone https://${GITHUB_TOKEN}@github.com/jk7testorg/k8s-manifest.git
                         cd k8s-manifests
         
                         mkdir -p apps/${APP_NAME}
@@ -100,6 +100,7 @@ pipeline {
         }
     }
 }
+
 
 
 
