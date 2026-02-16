@@ -61,7 +61,7 @@ pipeline {
 
         stage('Update GitOps Repo') {
             steps {
-                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                withCredentials([string(credentialsId: 'jk7-github-token', variable: 'GITHUB_TOKEN')]) {
                     sh '''
                         git clone https://${GITHUB_TOKEN}@github.com/jk7testorg/k8s-manifest.git
                         cd k8s-manifest
@@ -100,6 +100,7 @@ pipeline {
         }
     }
 }
+
 
 
 
