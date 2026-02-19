@@ -54,7 +54,7 @@ spec:
         catalogInfoPath: "/catalog-info.yaml"
 
     - id: create-k8s-folder
-      name: Create K8s Manifest Folder
+      name: Create K8s Folder
       action: publish:github:pull-request
       input:
         repoUrl: github.com?owner=jk7testorg&repo=k8s-manifest
@@ -69,6 +69,7 @@ spec:
       - title: Repository
 
         url: ${{ steps['publish'].output.remoteUrl }}
+
 
 
 
