@@ -81,7 +81,7 @@ pipeline {
         
                         git add .
                         git commit -m "Deploy ${APP_NAME} build ${BUILD_NUMBER}" || true
-                        git push
+                        git push origin main
                     '''
                 }
             }
