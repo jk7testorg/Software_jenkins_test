@@ -25,7 +25,6 @@ spec:
           description: The environment where this component will be deployed
           enum:
             - dev
-            - prod
 
   steps:
     - id: fetch-base
