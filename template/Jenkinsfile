@@ -75,6 +75,8 @@ pipeline {
                 sh '''
                     cd k8s-manifest
 
+                    git checkout -B main   
+
                     mkdir -p apps/${APP_NAME}
 
                     cp -r ../manifest-templates/* apps/${APP_NAME}/
@@ -87,6 +89,7 @@ pipeline {
 
                     git add .
                     git commit -m "Deploy ${APP_NAME} build ${BUILD_NUMBER}" || true
+
                     git push origin main
                 '''
             }
