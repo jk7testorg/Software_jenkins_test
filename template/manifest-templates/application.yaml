@@ -11,7 +11,7 @@ spec:
     path: apps/${APP_NAME}
   destination:
     server: https://kubernetes.default.svc
-    namespace: Jaykumar
+    namespace: default
   syncPolicy:
     automated:
       prune: true
