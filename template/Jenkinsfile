@@ -58,35 +58,39 @@ pipeline {
                 '''
             }
         }
-
+        
         stage('Update GitOps Repo') {
             steps {
-                withCredentials([string(credentialsId: 'jk7-github-token', variable: 'GITHUB_TOKEN')]) {
-                    sh '''
-                        rm -rf k8s-manifest
+                dir('k8s-manifest') {
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/main']],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/jk7testorg/k8s-manifest.git',
+                            credentialsId: 'jk7-github-token'
+                         ]]
+                    ])
+                 }
 
-                        git clone --depth 1 https://${GITHUB_TOKEN}@github.com/jk7testorg/k8s-manifest.git
-                        cd k8s-manifest
-        
-                        mkdir -p apps/${APP_NAME}
-        
-                        cp -r ../manifest-templates/* apps/${APP_NAME}/
-        
-                        sed -i "s|\\${APP_NAME}|${APP_NAME}|g" apps/${APP_NAME}/*.yaml
-                        sed -i "s|\\${DOCKER_IMAGE}|${IMAGE_TAG}|g" apps/${APP_NAME}/deployment.yaml
-        
-                        git config --global --add safe.directory '*'
-                        git config user.email "jenkins@local"
-                        git config user.name "jenkins"
-        
-                        git add .
-                        git commit -m "Deploy ${APP_NAME} build ${BUILD_NUMBER}" || true
-                        git push origin main
-                    '''
-                }
+                sh '''
+                    cd k8s-manifest
+
+                    mkdir -p apps/${APP_NAME}
+
+                    cp -r ../manifest-templates/* apps/${APP_NAME}/
+
+                    sed -i "s|\\${APP_NAME}|${APP_NAME}|g" apps/${APP_NAME}/*.yaml
+                    sed -i "s|\\${DOCKER_IMAGE}|${IMAGE_TAG}|g" apps/${APP_NAME}/deployment.yaml
+
+                    git config user.email "jenkins@local"
+                    git config user.name "jenkins"
+
+                    git add .
+                    git commit -m "Deploy ${APP_NAME} build ${BUILD_NUMBER}" || true
+                    git push origin main
+                '''
             }
         }
-
     }
 
     post {
