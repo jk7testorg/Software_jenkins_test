@@ -4,6 +4,8 @@ metadata:
   name: Github-Jenkins-ArgoCD-Template
   title: Github-Jenkins-ArgoCD Template
   description: Showcase the flow from Github to ArgoCD
+  tags:
+    - backend
 spec:
   owner: development
   type: service
