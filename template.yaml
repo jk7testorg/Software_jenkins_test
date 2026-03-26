@@ -6,9 +6,9 @@ metadata:
   description: Showcase the flow from Github to ArgoCD
   tags:
     - recommended
-spec:
-  owner: development
-  type: service
+  spec:
+    owner: development
+    type: service
 
   parameters:
     - title: Fill in some steps
