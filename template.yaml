@@ -46,12 +46,18 @@ spec:
         repoUrl: github.com?owner=jk7testorg&repo=${{parameters.component_id}}
         protectDefaultBranch: false
         repoVisibility: public
-
+        
+    - id: debug
+      name: Debug
+      action: debug:log
+      input:
+        message: ${{ steps.publish.output.repoContentsUrl }}
+        
     - id: register
       name: Register
       action: catalog:register
       input:
-        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
     - id: create-k8s-folder
