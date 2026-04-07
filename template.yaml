@@ -47,12 +47,6 @@ spec:
         protectDefaultBranch: false
         repoVisibility: public
         
-    - id: debug
-      name: Debug
-      action: debug:log
-      input:
-        message: ${{ steps.publish.output.repoContentsUrl }}
-        
     - id: register
       name: Register
       action: catalog:register
